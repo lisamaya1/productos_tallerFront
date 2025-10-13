@@ -1,0 +1,28 @@
+<h2>Lista de Productos</h2>
+
+<table border="1" cellspacing="0" cellpadding="8">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+        @for (p of productos; track p.id) {
+      <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.nombre }}</td>
+        <td>{{ p.precio }}</td>
+        <td>
+          <button (click)="eliminarProducto(p.id!)">Eliminar</button>
+        </td>
+      </tr>
+    } @empty {
+        <tr>
+          <td colspan="4">No hay productos disponibles.</td>
+        </tr>
+    }
+  </tbody>
+</table>
