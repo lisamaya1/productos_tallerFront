@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductoService, Producto } from '../../../services/producto.service';
-import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-producto-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
- templateUrl: './producto-list.html'
-
-
+  imports: [CommonModule],
+  templateUrl: './producto-list.html',
 })
 export class ProductoListComponent implements OnInit {
   productos: Producto[] = [];
@@ -27,9 +24,9 @@ export class ProductoListComponent implements OnInit {
   }
 
   eliminarProducto(id: number): void {
-    if (confirm('¿Estás seguro de eliminar este producto?')) {
+    if (confirm('Seguro que deseas eliminar este producto?')) {
       this.productoService.eliminar(id).subscribe(() => {
-        this.cargarProductos(); // recargar después de eliminar
+        this.cargarProductos(); // recarga la lista tras eliminar
       });
     }
   }

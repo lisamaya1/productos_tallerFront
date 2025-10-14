@@ -1,28 +1,35 @@
-<h2>Lista de Productos</h2>
+<section class="producto-list">
+  <header class="producto-list__header">
+    <h2>Lista de Productos</h2>
+    <span class="producto-list__count">
+      {{ productos.length }} {{ productos.length === 1 ? 'producto' : 'productos' }}
+    </span>
+  </header>
 
-<table border="1" cellspacing="0" cellpadding="8">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nombre</th>
-      <th>Precio</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-        @for (p of productos; track p.id) {
-      <tr>
-        <td>{{ p.id }}</td>
-        <td>{{ p.nombre }}</td>
-        <td>{{ p.precio }}</td>
-        <td>
-          <button (click)="eliminarProducto(p.id!)">Eliminar</button>
-        </td>
-      </tr>
-    } @empty {
+  <table class="producto-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (p of productos; track p.id) {
         <tr>
-          <td colspan="4">No hay productos disponibles.</td>
+          <td>{{ p.id }}</td>
+          <td>{{ p.nombre }}</td>
+          <td>{{ p.precio | currency:'USD':'symbol':'1.0-2' }}</td>
+          <td>
+            <button class="btn-delete" (click)="eliminarProducto(p.id!)">Eliminar</button>
+          </td>
         </tr>
-    }
-  </tbody>
-</table>
+      } @empty {
+        <tr>
+          <td class="producto-table__empty" colspan="4">No hay productos disponibles.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</section>
