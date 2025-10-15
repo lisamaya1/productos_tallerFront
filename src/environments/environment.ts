@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080/api/productos'
+  apiUrl: 'https://backend-production-3242.up.railway.app/api/productos'
 };
 
