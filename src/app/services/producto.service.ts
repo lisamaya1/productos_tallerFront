@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 // Modelo de datos del producto
 export interface Producto {
@@ -13,7 +14,7 @@ export interface Producto {
   providedIn: 'root'
 })
 export class ProductoService {
-  private apiUrl = 'http://localhost:8080/api/productos'; // backend Spring Boot
+  private readonly apiUrl = environment.apiUrl; // backend base URL configurable por entorno
 
   constructor(private http: HttpClient) {}
 
